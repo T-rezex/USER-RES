@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>User Research </title>
+    <link rel="stylesheet" href="web css.css">
+   
+</head>
+
+<body>
+    <header>
+        <h1>User Research </h1>
+    </header>
+
+    <nav>
+        <a href="Untitled-1.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <section>
+        <h2>About User Research</h2>
+        <p>User research is a crucial aspect of the design and development process, focusing on understanding the needs,
+            behaviors, and preferences of the end-users. It involves various methodologies to gather insights and
+            inform decision-making throughout the product lifecycle.</p>
+    </section>
+
+    <section>
+        <h2>Why User Research Matters</h2>
+        <p>User research helps in:</p>
+        <ul>
+            <li>Identifying user needs and pain points</li>
+            <li>Validating design decisions</li>
+            <li>Improving user satisfaction</li>
+            <li>Enhancing usability and accessibility</li>
+            <li>Guiding product development</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>User Research Methods</h2>
+        <p>There are various user research methods, including but not limited to:</p>
+        <ul>
+            <li>Surveys and questionnaires</li>
+            <li>Interviews</li>
+            <li>Usability testing</li>
+            <li>Card sorting</li>
+            <li>Field studies</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Benefits of User Research</h2>
+        <p>Engaging in user research provides several benefits, such as:</p>
+        <ul>
+            <li>Creating user-centered designs</li>
+            <li>Reducing development costs</li>
+            <li>Increasing user satisfaction</li>
+            <li>Minimizing the risk of product failure</li>
+            <li>Building products that meet user expectations</li>
+        </ul>
+    </section>
+
+    <form id="userForm">
+        <h2>Participant Information</h2>
+
+        <label for="participantName">Participant's Name</label>
+        <input type="text" id="participantName" name="participantName" required>
+
+        <label for="participantPhone">Participant's Phone #</label>
+        <input type="tel" id="participantPhone" name="participantPhone" required>
+
+        <br>
+        <br>
+
+        <br>
+
+        <br>
+
+
+        <label for="consent">Participant's Consent</label>
+        <textarea id="consent" name="consent" rows="4" required></textarea>
+
+        <p>I <input type="radio" id="agree" name="consentChoice" value="agree" required> agree
+            <input type="radio" id="disagree" name="consentChoice" value="disagree" required> do not agree</p>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <button type="button" onclick="displayFormData()">Submit</button>
+    </form>
+
+    <div id="formDataContainer" style="display: none;">
+        <h2>Participant Information</h2>
+        <p><strong>Name:</strong> <span id="displayParticipantName"></span></p>
+        <p><strong>Phone #:</strong> <span id="displayParticipantPhone"></span></p>
+        <p><strong>Consent:</strong> <span id="displayConsent"></span></p>
+        <p><strong>Agreement:</strong> <span id="displayAgreement"></span></p>
+        <p><strong>Date:</strong> <span id="displayDate"></span></p>
+        <button onclick="printFormData()">Print Data</button>
+    </div>
+
+    <footer>
+        <p>Contact us at: s4xxxxx@st.uqu.edu.sa</p>
+    </footer>
+
+    <script>
+        function displayFormData() {
+            var participantName = document.getElementById('participantName').value;
+            var participantPhone = document.getElementById('participantPhone').value;
+            var consent = document.getElementById('consent').value;
+            var agreement = document.querySelector('input[name="consentChoice"]:checked').value;
+            var date = document.getElementById('date').value;
+
+            // Display the form data on the webpage
+            document.getElementById('displayParticipantName').textContent = participantName;
+            document.getElementById('displayParticipantPhone').textContent = participantPhone;
+            document.getElementById('displayConsent').textContent = consent;
+            document.getElementById('displayAgreement').textContent = agreement;
+            document.getElementById('displayDate').textContent = date;
+
+            // Show the container with the displayed data
+            document.getElementById('formDataContainer').style.display = 'block';
+        }
+
+        function printFormData() {
+            var printWindow = window.open('', '_blank');
+            printWindow.document.write('<html><head><title>Print Data</title></head><body>');
+            printWindow.document.write('<h2>Participant Information</h2>');
+            printWindow.document.write('<p><strong>Name:</strong> ' + document.getElementById('displayParticipantName').textContent + '</p>');
+            printWindow.document.write('<p><strong>Phone #:</strong> ' + document.getElementById('displayParticipantPhone').textContent + '</p>');
+            printWindow.document.write('<p><strong>Consent:</strong> ' + document.getElementById('displayConsent').textContent + '</p>');
+            printWindow.document.write('<p><strong>Agreement:</strong> ' + document.getElementById('displayAgreement').textContent + '</p>');
+            printWindow.document.write('<p><strong>Date:</strong> ' + document.getElementById('displayDate').textContent + '</p>');
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+
+</html>
